@@ -1,0 +1,151 @@
+/* --- 1. THE SCROLLBAR (Matches Forest) --- */
+::-webkit-scrollbar {
+    width: 12px;
+}
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.7); 
+}
+::-webkit-scrollbar-thumb {
+    background: #004d00; 
+    border: 2px solid #ffffff;
+}
+
+/* --- 2. THE BACKGROUND (Fixed Layer) --- */
+html {
+    /* We set the background here so it doesn't interfere with the body size */
+    background: url('enchanted-forest-scene-stockcake.webp') no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+body {
+    font-family: 'Verdana', sans-serif;
+    font-size: 12px;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    /* This ensures the body doesn't expand past the screen width */
+    overflow-x: hidden; 
+}
+
+/* --- 3. THE LAYOUT (The 900px Box) --- */
+#container {
+    width: 900px;
+    margin: 40px auto; /* This MUST be 'auto' to stay centered */
+    background-color: transparent;
+    display: block;
+}
+
+/* --- 4. BOXES & TRANSPARENCY --- */
+header, .box, footer {
+    background-color: rgba(255, 255, 255, 0.85);
+    border: 1px solid #006994;
+    box-shadow: 2px 2px 0px #006994;
+    backdrop-filter: blur(5px);
+    margin-bottom: 10px;
+}
+
+header {
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    font-family: 'VT323', monospace;
+    font-size: 80px;
+    text-transform: uppercase;
+    margin: 0;
+    color: red; 
+    text-shadow: 4px 4px 0px black; 
+    letter-spacing: 6px;
+    font-weight: normal;             
+    line-height: 1;
+}
+
+header p {
+    font-family: 'VT323', monospace;
+    font-size: 22px;
+    color: #111;
+    margin-top: 5px;
+}
+
+/* --- 5. CONTENT AREA --- */
+#content-area {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+}
+
+aside {
+    width: 250px;
+    flex-shrink: 0;
+}
+
+main {
+    flex-grow: 1;
+    min-width: 0;
+}
+
+/* --- 6. IMAGES & GIFS --- */
+.big-profile-pic {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 0; 
+}
+
+.gif-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.gif-container img {
+    width: 31%;
+    height: auto;
+}
+
+.profile-stats {
+    padding: 10px;
+    text-align: center;
+}
+
+/* --- 7. CAROUSEL --- */
+.carousel-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 15px;
+    padding-bottom: 15px;
+}
+
+.carousel-container::-webkit-scrollbar {
+    height: 10px;
+}
+
+.carousel-container::-webkit-scrollbar-thumb {
+    background: #004d00;
+    border: 1px solid #fff;
+}
+
+.video-slot {
+    min-width: 300px;
+    height: 180px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px dashed #006994;
+    flex-shrink: 0;
+}
+
+/* --- 8. LINKS --- */
+.link-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+footer {
+    padding: 10px;
+    text-align: center;
+    font-size: 10px;
+}
