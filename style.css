@@ -12,7 +12,6 @@
 
 /* --- 2. THE BACKGROUND (Fixed Layer) --- */
 html {
-    /* We set the background here so it doesn't interfere with the body size */
     background: url('enchanted-forest-scene-stockcake.webp') no-repeat center center fixed;
     background-size: cover;
     margin: 0;
@@ -26,14 +25,13 @@ body {
     color: #333;
     margin: 0;
     padding: 0;
-    /* This ensures the body doesn't expand past the screen width */
     overflow-x: hidden; 
 }
 
 /* --- 3. THE LAYOUT (The 900px Box) --- */
 #container {
     width: 900px;
-    margin: 40px auto; /* This MUST be 'auto' to stay centered */
+    margin: 40px auto;
     background-color: transparent;
     display: block;
 }
@@ -137,11 +135,21 @@ main {
     flex-shrink: 0;
 }
 
-/* --- 8. LINKS --- */
+/* --- 8. LINKS & LOGOS --- */
 .link-row {
     display: flex;
     align-items: center;
     gap: 10px;
+    margin-bottom: 5px;
+    padding: 5px 10px;
+}
+
+/* This fixes the massive Twitter/Discord logo issue */
+.link-row img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    flex-shrink: 0;
 }
 
 footer {
