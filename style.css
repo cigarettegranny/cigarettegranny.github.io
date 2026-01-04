@@ -30,34 +30,34 @@ header { margin-bottom: 20px; }
 
 #sidebar { width: 250px; flex-shrink: 0; }
 
-/* STACKING BOXES UNDER EACH OTHER ON THE RIGHT */
 #main-content { 
     flex-grow: 1; 
     display: flex; 
-    flex-direction: column; /* This puts the carousel under the welcome box */
+    flex-direction: column; 
     gap: 15px; 
     min-width: 0; 
 }
 
-/* --- 4. BOXES & FLOWER PATTERN --- */
+/* --- 4. BOXES & FLOWERS --- */
 .box, header, footer {
     position: relative;
     background-color: #d1d9e0; 
-    background-image: url('flowers.jpg'); 
+    background-image: url('flower.png'); /* UPDATED FILENAME */
     background-repeat: repeat;           
     background-size: 150px; 
     border: 1px solid #006994;
     box-shadow: 4px 4px 0px #006994;
     margin-bottom: 10px;
-    padding: 15px;
+    padding: 20px;
     z-index: 1;
+    overflow: hidden;
 }
 
 .box::before, header::before, footer::before {
     content: "";
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(255, 255, 255, 0.7); 
+    background: rgba(255, 255, 255, 0.6); 
     z-index: -1;
 }
 
@@ -99,7 +99,7 @@ header p { text-align: center; font-family: 'VT323', monospace; font-size: 22px;
 .social-icon { width: 20px; height: 20px; }
 .link-row { display: flex; align-items: center; gap: 10px; margin-top: 5px; }
 
-/* --- 6. THE SIDEWAYS CAROUSEL FIX --- */
+/* --- 6. CAROUSEL --- */
 .carousel-container { 
     display: flex; 
     flex-wrap: nowrap; 
@@ -110,7 +110,7 @@ header p { text-align: center; font-family: 'VT323', monospace; font-size: 22px;
 }
 
 .video-slot { 
-    flex: 0 0 300px; /* Keeps them wide to force the scroll */
+    flex: 0 0 300px; 
     height: 180px; 
     background-color: black; 
     border: 1px solid #006994; 
