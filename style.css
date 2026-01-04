@@ -75,29 +75,31 @@ main { flex-grow: 1; min-width: 300px; }
     margin-bottom: 10px; 
 }
 
-/* The GIF Container in the Sidebar */
+/* Sidebar GIF Container */
 .gif-sidebar-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px; /* Equal spacing */
+    gap: 8px; 
     justify-content: center;
 }
 
-/* Small, equally spaced GIFs */
+/* THIS FIXES THE MASSIVE GIFS */
 .sidebar-gif {
-    width: 65px; /* Adjust this to make them bigger or smaller */
-    height: 65px;
+    width: 60px !important;
+    height: 60px !important;
     object-fit: cover;
     border: 1px solid #006994;
     image-rendering: pixelated;
+    display: inline-block;
 }
 
 .link-row { display: flex; align-items: center; gap: 10px; margin-top: 10px; }
 
-/* Social Icons stay small */
-.link-row img {
+/* Keep social icons small */
+.social-icon {
     width: 24px !important;
     height: 24px !important;
+    object-fit: contain;
 }
 
 /* --- 7. CAROUSEL --- */
