@@ -15,7 +15,7 @@ body {
 
 /* --- 3. THE LAYOUT --- */
 #container {
-    max-width: 1000px;
+    max-width: 1100px;
     margin: 40px auto;
     padding: 0 20px;
 }
@@ -29,7 +29,22 @@ header { margin-bottom: 20px; }
 }
 
 #sidebar { width: 250px; flex-shrink: 0; }
-#main-content { flex-grow: 1; min-width: 0; }
+
+/* SIDE-BY-SIDE MAIN AREA */
+#main-content { 
+    flex-grow: 1; 
+    display: flex; 
+    gap: 15px; 
+    align-items: stretch;
+    min-width: 0; /* Prevents flex children from breaking layout */
+}
+
+.main-box {
+    flex: 1;
+    min-width: 0; /* Allows the box to contain the scrollable carousel */
+    display: flex;
+    flex-direction: column;
+}
 
 /* --- 4. BOXES & FLOWER PATTERN --- */
 .box, header, footer {
@@ -71,7 +86,6 @@ header p { text-align: center; font-family: 'VT323', monospace; font-size: 22px;
     height: auto; 
     display: block; 
     margin-bottom: 15px; 
-    /* Removed box styling, purely an image now */
 }
 
 .gif-sidebar-container {
@@ -92,18 +106,20 @@ header p { text-align: center; font-family: 'VT323', monospace; font-size: 22px;
 .social-icon { width: 20px; height: 20px; }
 .link-row { display: flex; align-items: center; gap: 10px; margin-top: 5px; }
 
-/* --- 6. FIXING THE HORIZONTAL CAROUSEL --- */
+/* --- 6. THE SIDEWAYS CAROUSEL FIX --- */
 .carousel-container { 
     display: flex; 
-    overflow-x: auto; /* Enables scrolling */
+    flex-wrap: nowrap; /* Forces videos into one single line */
+    overflow-x: auto; /* Enables the sideways scroll */
     gap: 15px; 
     padding: 10px 0;
     width: 100%;
+    -webkit-overflow-scrolling: touch; /* Smooth scroll for mobile */
 }
 
 .video-slot { 
-    flex: 0 0 300px; /* Crucial: Prevents videos from shrinking, keeps them at 300px wide */
-    height: 180px; 
+    flex: 0 0 280px; /* Prevents shrinking - keeps them 280px wide */
+    height: 160px; 
     background-color: black; 
     border: 1px solid #006994; 
 }
@@ -113,7 +129,7 @@ header p { text-align: center; font-family: 'VT323', monospace; font-size: 22px;
 footer { text-align: center; font-size: 11px; margin-top: 20px; }
 
 /* Mobile Logic */
-@media (max-width: 800px) {
-    #layout-wrapper { flex-direction: column; }
-    #sidebar { width: 100%; }
+@media (max-width: 850px) {
+    #layout-wrapper, #main-content { flex-direction: column; }
+    #sidebar, .main-box { width: 100%; }
 }
