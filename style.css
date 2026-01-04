@@ -20,7 +20,7 @@ body {
 
 /* --- 3. THE LAYOUT --- */
 #container {
-    max-width: 900px;
+    max-width: 1100px; /* Slightly wider to fit two boxes side-by-side */
     width: 95%; 
     margin: 40px auto;
 }
@@ -64,7 +64,20 @@ header p { text-align: center; font-family: 'VT323', monospace; font-size: 22px;
 /* --- 5. CONTENT AREA --- */
 #content-area { display: flex; gap: 10px; align-items: flex-start; flex-wrap: wrap; }
 aside { width: 250px; flex-shrink: 0; }
-main { flex-grow: 1; min-width: 300px; }
+
+/* MAIN AREA SIDE-BY-SIDE FIX */
+main { 
+    flex-grow: 1; 
+    display: flex; 
+    gap: 10px; 
+    flex-wrap: wrap; /* Allows them to stack on small screens */
+}
+
+.main-box {
+    flex: 1;
+    min-width: 300px; /* Prevents them from getting too skinny */
+    margin-bottom: 0px;
+}
 
 /* --- 6. IMAGE & GIF FIXES --- */
 .big-profile-pic { 
@@ -75,7 +88,6 @@ main { flex-grow: 1; min-width: 300px; }
     margin-bottom: 10px; 
 }
 
-/* Sidebar GIF Container */
 .gif-sidebar-container {
     display: flex;
     flex-wrap: wrap;
@@ -83,7 +95,6 @@ main { flex-grow: 1; min-width: 300px; }
     justify-content: center;
 }
 
-/* THIS FIXES THE MASSIVE GIFS */
 .sidebar-gif {
     width: 60px !important;
     height: 60px !important;
@@ -95,7 +106,6 @@ main { flex-grow: 1; min-width: 300px; }
 
 .link-row { display: flex; align-items: center; gap: 10px; margin-top: 10px; }
 
-/* Keep social icons small */
 .social-icon {
     width: 24px !important;
     height: 24px !important;
@@ -103,8 +113,8 @@ main { flex-grow: 1; min-width: 300px; }
 }
 
 /* --- 7. CAROUSEL --- */
-.carousel-container { display: flex; overflow-x: auto; gap: 15px; padding-bottom: 15px; }
-.video-slot { min-width: 300px; height: 180px; background-color: black; border: 1px solid #006994; flex-shrink: 0; }
+.carousel-container { display: flex; overflow-x: auto; gap: 10px; padding-bottom: 10px; }
+.video-slot { min-width: 250px; height: 150px; background-color: black; border: 1px solid #006994; flex-shrink: 0; }
 .video-slot iframe { width: 100%; height: 100%; border: none; }
 
-footer { text-align: center; font-size: 10px; }
+footer { text-align: center; font-size: 10px; width: 100%; }
