@@ -29,22 +29,12 @@ header { margin-bottom: 20px; }
 }
 
 #sidebar { width: 250px; flex-shrink: 0; }
+#main-content { flex-grow: 1; display: flex; flex-direction: column; gap: 15px; min-width: 0; }
 
-#main-content { 
-    flex-grow: 1; 
-    display: flex; 
-    flex-direction: column; 
-    gap: 15px; 
-    min-width: 0; 
-}
-
-/* --- 4. BOXES & FLOWERS --- */
+/* --- 4. THE BOXES & FLOWERS (NEW FIX) --- */
 .box, header, footer {
     position: relative;
-    background-color: #d1d9e0; 
-    background-image: url('flower.png'); /* UPDATED FILENAME */
-    background-repeat: repeat;           
-    background-size: 150px; 
+    background-color: white; /* Base color */
     border: 1px solid #006994;
     box-shadow: 4px 4px 0px #006994;
     margin-bottom: 10px;
@@ -53,11 +43,15 @@ header { margin-bottom: 20px; }
     overflow: hidden;
 }
 
+/* This layer holds the flower pattern ONLY */
 .box::before, header::before, footer::before {
     content: "";
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(255, 255, 255, 0.6); 
+    background-image: url('flower.png');
+    background-repeat: repeat;
+    background-size: 100px; /* Adjust size of flower pattern here */
+    opacity: 0.4; /* Makes flowers visible but light enough to read text */
     z-index: -1;
 }
 
@@ -73,20 +67,9 @@ header h1 {
 header p { text-align: center; font-family: 'VT323', monospace; font-size: 22px; }
 
 /* --- 5. IMAGE & GIF FIXES --- */
-.big-profile-pic { 
-    width: 100%; 
-    max-width: 250px; 
-    height: auto; 
-    display: block; 
-    margin-bottom: 15px; 
-}
+.big-profile-pic { width: 100%; max-width: 250px; height: auto; display: block; margin-bottom: 15px; }
 
-.gif-sidebar-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px; 
-    justify-content: center;
-}
+.gif-sidebar-container { display: flex; flex-wrap: wrap; gap: 5px; justify-content: center; }
 
 .sidebar-gif {
     width: 65px !important;
@@ -100,22 +83,8 @@ header p { text-align: center; font-family: 'VT323', monospace; font-size: 22px;
 .link-row { display: flex; align-items: center; gap: 10px; margin-top: 5px; }
 
 /* --- 6. CAROUSEL --- */
-.carousel-container { 
-    display: flex; 
-    flex-wrap: nowrap; 
-    overflow-x: auto; 
-    gap: 15px; 
-    padding: 10px 0;
-    width: 100%;
-}
-
-.video-slot { 
-    flex: 0 0 300px; 
-    height: 180px; 
-    background-color: black; 
-    border: 1px solid #006994; 
-}
-
+.carousel-container { display: flex; flex-wrap: nowrap; overflow-x: auto; gap: 15px; padding: 10px 0; width: 100%; }
+.video-slot { flex: 0 0 300px; height: 180px; background-color: black; border: 1px solid #006994; }
 .video-slot iframe { width: 100%; height: 100%; border: none; }
 
 footer { text-align: center; font-size: 11px; margin-top: 20px; }
