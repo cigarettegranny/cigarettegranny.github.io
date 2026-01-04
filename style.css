@@ -36,9 +36,17 @@ body {
     display: block;
 }
 
-/* --- 4. BOXES & TRANSPARENCY --- */
+/* --- 4. BOXES & FLOWER PATTERN --- */
 header, .box, footer {
     background-color: rgba(255, 255, 255, 0.85);
+    
+    /* --- FLOWER PATTERN START --- */
+    background-image: url('flower.png'); /* Change 'flower.png' to your exact filename */
+    background-repeat: repeat;           /* Makes it a repeating pattern */
+    background-size: 40px;               /* Adjust this to make flowers smaller or bigger */
+    background-blend-mode: multiply;      /* Blends flowers into the white background */
+    /* --- FLOWER PATTERN END --- */
+
     border: 1px solid #006994;
     box-shadow: 2px 2px 0px #006994;
     backdrop-filter: blur(5px);
@@ -135,21 +143,22 @@ main {
     flex-shrink: 0;
 }
 
-/* --- 8. LINKS & LOGOS --- */
+/* --- 8. LOGO FIX (FORCED SIZE) --- */
 .link-row {
     display: flex;
     align-items: center;
     gap: 10px;
     margin-bottom: 5px;
-    padding: 5px 10px;
+    padding: 10px;
 }
 
-/* This forces the logos to stay small */
-.link-row img {
+/* This forces all icons in boxes to be exactly 24px */
+.link-row img, 
+.box img {
     width: 24px !important;
     height: 24px !important;
-    object-fit: contain;
-    flex-shrink: 0;
+    max-width: 24px !important;
+    object-fit: contain !important;
 }
 
 footer {
