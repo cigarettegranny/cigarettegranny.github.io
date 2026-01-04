@@ -1,34 +1,24 @@
-/* --- 1. THE SCROLLBAR (Matches Forest) --- */
-::-webkit-scrollbar {
-    width: 12px;
-}
-::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.7); 
-}
-::-webkit-scrollbar-thumb {
-    background: #004d00; 
-    border: 2px solid #ffffff;
-}
+/* --- 1. THE SCROLLBAR --- */
+::-webkit-scrollbar { width: 12px; }
+::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.7); }
+::-webkit-scrollbar-thumb { background: #004d00; border: 2px solid #ffffff; }
 
-/* --- 2. THE BACKGROUND (Fixed Layer) --- */
+/* --- 2. THE BACKGROUND --- */
 html {
     background: url('enchanted-forest-scene-stockcake.webp') no-repeat center center fixed;
     background-size: cover;
-    margin: 0;
-    padding: 0;
-    height: 100%;
+    margin: 0; padding: 0; height: 100%;
 }
 
 body {
     font-family: 'Verdana', sans-serif;
     font-size: 12px;
-    color: #333;
-    margin: 0;
-    padding: 0;
+    color: #111; /* Darker text for contrast */
+    margin: 0; padding: 0;
     overflow-x: hidden; 
 }
 
-/* --- 3. THE LAYOUT (The 900px Box) --- */
+/* --- 3. THE LAYOUT --- */
 #container {
     width: 900px;
     margin: 40px auto;
@@ -36,26 +26,32 @@ body {
     display: block;
 }
 
-/* --- 4. BOXES & FLOWER PATTERN --- */
+/* --- 4. BOXES & FLOWER PATTERN FIX --- */
 header, .box, footer {
-    background-color: rgba(255, 255, 255, 0.85);
-    
-    /* --- FLOWER PATTERN START --- */
-    background-image: url('flower.png'); /* Change 'flower.png' to your exact filename */
-    background-repeat: repeat;           /* Makes it a repeating pattern */
-    background-size: 40px;               /* Adjust this to make flowers smaller or bigger */
-    background-blend-mode: multiply;      /* Blends flowers into the white background */
-    /* --- FLOWER PATTERN END --- */
-
+    position: relative;
+    background-color: #d1d9e0; 
+    background-image: url('flowers.jpg'); 
+    background-repeat: repeat;           
+    background-size: 200px; 
     border: 1px solid #006994;
     box-shadow: 2px 2px 0px #006994;
-    backdrop-filter: blur(5px);
     margin-bottom: 10px;
+    padding: 15px;
+    z-index: 1;
 }
 
-header {
-    padding: 20px;
-    text-align: center;
+/* READABILITY FIX: This adds a white fade over the flowers so text is clear */
+header::before, .box::before, footer::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(255, 255, 255, 0.6); /* Adjust 0.6 to make it more or less visible */
+    z-index: -1;
+}
+
+/* TEXT SHADOW: Makes letters stand out from the pattern */
+p, h2, h3, b, a {
+    text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.8);
 }
 
 header h1 {
@@ -66,103 +62,31 @@ header h1 {
     color: red; 
     text-shadow: 4px 4px 0px black; 
     letter-spacing: 6px;
-    font-weight: normal;             
     line-height: 1;
 }
 
-header p {
-    font-family: 'VT323', monospace;
-    font-size: 22px;
-    color: #111;
-    margin-top: 5px;
-}
-
 /* --- 5. CONTENT AREA --- */
-#content-area {
-    display: flex;
-    gap: 10px;
-    align-items: flex-start;
-}
+#content-area { display: flex; gap: 10px; align-items: flex-start; }
+aside { width: 250px; flex-shrink: 0; }
+main { flex-grow: 1; min-width: 0; }
 
-aside {
-    width: 250px;
-    flex-shrink: 0;
-}
+/* --- 6. LOGO & IMAGE FIX --- */
+.big-profile-pic { width: 100%; height: auto; display: block; }
 
-main {
-    flex-grow: 1;
-    min-width: 0;
-}
+.link-row { display: flex; align-items: center; gap: 10px; margin-top: 10px; }
 
-/* --- 6. IMAGES & GIFS --- */
-.big-profile-pic {
-    width: 100%;
-    height: auto;
-    display: block;
-    margin-bottom: 0; 
-}
-
-.gif-container {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-}
-
-.gif-container img {
-    width: 31%;
-    height: auto;
-}
-
-.profile-stats {
-    padding: 10px;
-    text-align: center;
-}
-
-/* --- 7. CAROUSEL --- */
-.carousel-container {
-    display: flex;
-    overflow-x: auto;
-    gap: 15px;
-    padding-bottom: 15px;
-}
-
-.carousel-container::-webkit-scrollbar {
-    height: 10px;
-}
-
-.carousel-container::-webkit-scrollbar-thumb {
-    background: #004d00;
-    border: 1px solid #fff;
-}
-
-.video-slot {
-    min-width: 300px;
-    height: 180px;
-    background-color: rgba(255, 255, 255, 0.9);
-    border: 1px dashed #006994;
-    flex-shrink: 0;
-}
-
-/* --- 8. LOGO FIX (FORCED SIZE) --- */
-.link-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 5px;
-    padding: 10px;
-}
-
-/* This forces all icons in boxes to be exactly 24px */
-.link-row img, 
-.box img {
+/* FORCED LOGO SIZE */
+.link-row img, .nav img {
     width: 24px !important;
     height: 24px !important;
     max-width: 24px !important;
     object-fit: contain !important;
+    display: inline-block !important;
+    margin: 0 !important;
 }
 
-footer {
-    padding: 10px;
-    text-align: center;
-    font-size: 10px;
-}
+/* --- 7. CAROUSEL --- */
+.carousel-container { display: flex; overflow-x: auto; gap: 15px; padding-bottom: 15px; }
+.video-slot { min-width: 300px; height: 180px; background-color: rgba(255,255,255,0.8); border: 1px dashed #006994; }
+
+footer { text-align: center; font-size: 10px; }
