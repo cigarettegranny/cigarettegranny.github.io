@@ -20,7 +20,8 @@ body {
 
 /* --- 3. THE LAYOUT --- */
 #container {
-    width: 900px;
+    max-width: 900px; /* Changed to max-width for better responsiveness */
+    width: 95%; 
     margin: 40px auto;
     background-color: transparent;
 }
@@ -39,7 +40,6 @@ header, .box, footer {
     z-index: 1;
 }
 
-/* This adds a white fade over the flowers so the text is clear */
 header::before, .box::before, footer::before {
     content: "";
     position: absolute;
@@ -50,7 +50,7 @@ header::before, .box::before, footer::before {
 
 header h1 {
     font-family: 'VT323', monospace;
-    font-size: 80px;
+    font-size: clamp(40px, 10vw, 80px); /* Adjusts size based on screen */
     text-transform: uppercase;
     margin: 0;
     color: red; 
@@ -67,21 +67,48 @@ header p {
 }
 
 /* --- 5. CONTENT AREA --- */
-#content-area { display: flex; gap: 10px; align-items: flex-start; }
-aside { width: 250px; flex-shrink: 0; }
-main { flex-grow: 1; min-width: 0; }
+#content-area { 
+    display: flex; 
+    gap: 10px; 
+    align-items: flex-start; 
+    flex-wrap: wrap; /* Ensures sidebar drops down on mobile */
+}
+aside { width: 250px; flex-shrink: 0; margin: 0 auto; }
+main { flex-grow: 1; min-width: 300px; }
 
-/* --- 6. LOGO & IMAGE FIX --- */
-.big-profile-pic { width: 100%; height: auto; display: block; }
+/* --- 6. IMAGE FIXES --- */
+.big-profile-pic { 
+    width: 100%; 
+    max-width: 250px; 
+    height: auto; 
+    display: block; 
+    margin: 0 auto 10px; 
+}
+
 .link-row { display: flex; align-items: center; gap: 10px; margin-top: 10px; }
 
-/* Forces logos to be small */
-.link-row img, .box img:not(.big-profile-pic) {
+/* Forces small icons for links */
+.link-row img {
     width: 24px !important;
     height: 24px !important;
-    max-width: 24px !important;
     object-fit: contain !important;
-    display: inline-block !important;
+}
+
+/* GIF GALLERY: Fixes the "massive" visual issue */
+.gif-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.gif-gallery img {
+    width: 140px; /* Constrains the massive GIFs to small windows */
+    height: 140px;
+    object-fit: cover;
+    border: 1px solid #006994;
+    image-rendering: pixelated; /* Keeps them sharp */
 }
 
 /* --- 7. CAROUSEL & VIDEO SLOTS --- */
