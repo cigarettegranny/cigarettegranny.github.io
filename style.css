@@ -1,120 +1,79 @@
-/* --- 1. THE SCROLLBAR --- */
-::-webkit-scrollbar { width: 12px; }
-::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.7); }
-::-webkit-scrollbar-thumb { background: #004d00; border: 2px solid #ffffff; }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cigarettegranny</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="container">
 
-/* --- 2. THE BACKGROUND --- */
-html {
-    background: url('enchanted-forest-scene-stockcake.webp') no-repeat center center fixed;
-    background-size: cover;
-    margin: 0; padding: 0; height: 100%;
-}
+        <header>
+            <h1>cigarettegranny</h1>
+            <p>my portfolio</p>
+        </header>
 
-body {
-    font-family: 'Verdana', sans-serif;
-    font-size: 12px;
-    color: #111;
-    margin: 0; padding: 0;
-    overflow-x: hidden; 
-}
+        <div id="content-area">
 
-/* --- 3. THE LAYOUT --- */
-#container {
-    max-width: 1100px; /* Slightly wider to fit two boxes side-by-side */
-    width: 95%; 
-    margin: 40px auto;
-}
+            <aside>
+                <img src="doggy.webp" alt="Profile Pic" class="big-profile-pic">
+                
+                <div class="box profile-stats">
+                    <p><b>Name:</b> cigarettegranny<br>
+                    <b>Status:</b> editing<br>
+                    <b>Mood:</b> taking a shit</p>
+                </div>
 
-/* --- 4. BOXES & FLOWER PATTERN --- */
-header, .box, footer {
-    position: relative;
-    background-color: #d1d9e0; 
-    background-image: url('flowers.jpg'); 
-    background-repeat: repeat;           
-    background-size: 150px; 
-    border: 1px solid #006994;
-    box-shadow: 2px 2px 0px #006994;
-    margin-bottom: 10px;
-    padding: 15px;
-    z-index: 1;
-}
+                <div class="box gif-sidebar-container">
+                    <img src="your-gif-1.gif" alt="Gif 1" class="sidebar-gif">
+                    <img src="your-gif-2.gif" alt="Gif 2" class="sidebar-gif">
+                    <img src="your-gif-3.gif" alt="Gif 3" class="sidebar-gif">
+                </div>
 
-header::before, .box::before, footer::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(255, 255, 255, 0.6); 
-    z-index: -1;
-}
+                <div class="box">
+                    <h3 style="text-align: center;">Socials</h3>
+                    <div class="link-row">
+                        <img src="discord.png" alt="Discord" class="social-icon">
+                        <p><b>Discord:</b> <a href="#">cigarettegranny</a></p>
+                    </div>
+                </div>
 
-header h1 {
-    font-family: 'VT323', monospace;
-    font-size: clamp(40px, 10vw, 80px);
-    text-transform: uppercase;
-    margin: 0;
-    color: red; 
-    text-shadow: 4px 4px 0px black; 
-    letter-spacing: 6px;
-    line-height: 1;
-    text-align: center;
-}
+                <div class="box">
+                    <h3 style="text-align: center;">Links</h3>
+                    <div class="link-row">
+                        <img src="twitter.png" alt="Twitter" class="social-icon"> 
+                        <a href="https://twitter.com" target="_blank">Twitter</a>
+                    </div>
+                </div>
+            </aside>
 
-header p { text-align: center; font-family: 'VT323', monospace; font-size: 22px; }
+            <main>
+                <div class="box main-box">
+                    <h2>welcome!</h2>
+                    <p>if you want to contact me for work then all you have to do is either add my discord or my twitter on the left side and then we can negotiate and start the serious talks.</p>
+                </div>
 
-/* --- 5. CONTENT AREA --- */
-#content-area { display: flex; gap: 10px; align-items: flex-start; flex-wrap: wrap; }
-aside { width: 250px; flex-shrink: 0; }
+                <div class="box main-box">
+                    <h3>livestreaming</h3>
+                    <div class="carousel-container">
+                        <div class="video-slot">
+                            <iframe src="https://www.youtube.com/embed/smgiKym85x0" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-slot">
+                            <iframe src="https://www.youtube.com/embed/smgiKym85x0" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <p style="font-size: 11px; margin-top: 5px; font-weight: bold; color: #111;">* Scroll horizontally *</p>
+                </div>
+            </main>
+        </div> 
 
-/* MAIN AREA SIDE-BY-SIDE FIX */
-main { 
-    flex-grow: 1; 
-    display: flex; 
-    gap: 10px; 
-    flex-wrap: wrap; /* Allows them to stack on small screens */
-}
-
-.main-box {
-    flex: 1;
-    min-width: 300px; /* Prevents them from getting too skinny */
-    margin-bottom: 0px;
-}
-
-/* --- 6. IMAGE & GIF FIXES --- */
-.big-profile-pic { 
-    width: 100%; 
-    max-width: 250px; 
-    height: auto; 
-    display: block; 
-    margin-bottom: 10px; 
-}
-
-.gif-sidebar-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px; 
-    justify-content: center;
-}
-
-.sidebar-gif {
-    width: 60px !important;
-    height: 60px !important;
-    object-fit: cover;
-    border: 1px solid #006994;
-    image-rendering: pixelated;
-    display: inline-block;
-}
-
-.link-row { display: flex; align-items: center; gap: 10px; margin-top: 10px; }
-
-.social-icon {
-    width: 24px !important;
-    height: 24px !important;
-    object-fit: contain;
-}
-
-/* --- 7. CAROUSEL --- */
-.carousel-container { display: flex; overflow-x: auto; gap: 10px; padding-bottom: 10px; }
-.video-slot { min-width: 250px; height: 150px; background-color: black; border: 1px solid #006994; flex-shrink: 0; }
-.video-slot iframe { width: 100%; height: 100%; border: none; }
-
-footer { text-align: center; font-size: 10px; width: 100%; }
+        <footer>
+            <p>© 2026</p>
+            <a href="#">Back to Top</a>
+        </footer>
+    </div>
+</body>
+</html>
