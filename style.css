@@ -1,33 +1,26 @@
 /* --- 1. THE SCROLLBAR --- */
-::-webkit-scrollbar { width: 12px; }
+::-webkit-scrollbar { width: 12px; height: 10px; }
 ::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.7); }
 ::-webkit-scrollbar-thumb { background: #004d00; border: 2px solid #ffffff; }
 
 /* --- 2. THE BACKGROUND --- */
-html, body {
-    margin: 0; padding: 0; height: 100%;
-}
-
+html, body { margin: 0; padding: 0; height: 100%; }
 body {
     background: url('enchanted-forest-scene-stockcake.webp') no-repeat center center fixed;
     background-size: cover;
     font-family: 'Verdana', sans-serif;
     font-size: 12px;
     color: #111;
-    overflow-x: hidden; 
 }
 
-/* --- 3. THE LAYOUT STRUCTURE (SEAFARE STYLE) --- */
+/* --- 3. THE LAYOUT --- */
 #container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
 }
 
-header {
-    margin-bottom: 20px;
-    width: 100%;
-}
+header { margin-bottom: 20px; }
 
 #layout-wrapper {
     display: flex;
@@ -35,19 +28,8 @@ header {
     align-items: flex-start;
 }
 
-/* SIDEBAR: Narrow and Fixed-Width */
-#sidebar {
-    width: 250px;
-    flex-shrink: 0;
-}
-
-/* MAIN CONTENT: Flexible like Seafare */
-#main-content {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
+#sidebar { width: 250px; flex-shrink: 0; }
+#main-content { flex-grow: 1; min-width: 0; }
 
 /* --- 4. BOXES & FLOWER PATTERN --- */
 .box, header, footer {
@@ -57,7 +39,7 @@ header {
     background-repeat: repeat;           
     background-size: 150px; 
     border: 1px solid #006994;
-    box-shadow: 4px 4px 0px #006994; /* Slightly heavier shadow for that seafare look */
+    box-shadow: 4px 4px 0px #006994;
     margin-bottom: 10px;
     padding: 15px;
     z-index: 1;
@@ -73,23 +55,23 @@ header {
 
 header h1 {
     font-family: 'VT323', monospace;
-    font-size: clamp(40px, 10vw, 80px);
+    font-size: 70px;
     text-transform: uppercase;
-    margin: 0;
-    color: red; 
+    margin: 0; color: red; 
     text-shadow: 4px 4px 0px black; 
     text-align: center;
 }
 
-header p { text-align: center; font-family: 'VT323', monospace; font-size: 22px; margin: 0; }
+header p { text-align: center; font-family: 'VT323', monospace; font-size: 22px; }
 
 /* --- 5. IMAGE & GIF FIXES --- */
 .big-profile-pic { 
     width: 100%; 
+    max-width: 250px; 
     height: auto; 
     display: block; 
-    border: 2px solid #006994;
-    margin-bottom: 10px; 
+    margin-bottom: 15px; 
+    /* Removed box styling, purely an image now */
 }
 
 .gif-sidebar-container {
@@ -97,46 +79,41 @@ header p { text-align: center; font-family: 'VT323', monospace; font-size: 22px;
     flex-wrap: wrap;
     gap: 5px; 
     justify-content: center;
-    padding: 10px;
 }
 
 .sidebar-gif {
-    width: 60px !important;
-    height: 60px !important;
+    width: 65px !important;
+    height: 65px !important;
     object-fit: cover;
     border: 1px solid #006994;
     image-rendering: pixelated;
 }
 
-.link-row { display: flex; align-items: center; gap: 10px; margin-top: 5px; }
 .social-icon { width: 20px; height: 20px; }
+.link-row { display: flex; align-items: center; gap: 10px; margin-top: 5px; }
 
-/* --- 6. VIDEO CAROUSEL --- */
+/* --- 6. FIXING THE HORIZONTAL CAROUSEL --- */
 .carousel-container { 
     display: flex; 
-    overflow-x: auto; 
+    overflow-x: auto; /* Enables scrolling */
     gap: 15px; 
-    padding-bottom: 10px;
+    padding: 10px 0;
+    width: 100%;
 }
 
 .video-slot { 
-    min-width: 300px; 
+    flex: 0 0 300px; /* Crucial: Prevents videos from shrinking, keeps them at 300px wide */
     height: 180px; 
     background-color: black; 
     border: 1px solid #006994; 
-    flex-shrink: 0; 
 }
 
 .video-slot iframe { width: 100%; height: 100%; border: none; }
 
-footer { text-align: center; font-size: 11px; margin-top: 20px; clear: both; }
+footer { text-align: center; font-size: 11px; margin-top: 20px; }
 
-/* MOBILE RESPONSIVENESS */
-@media (max-width: 850px) {
-    #layout-wrapper {
-        flex-direction: column;
-    }
-    #sidebar {
-        width: 100%;
-    }
+/* Mobile Logic */
+@media (max-width: 800px) {
+    #layout-wrapper { flex-direction: column; }
+    #sidebar { width: 100%; }
 }
