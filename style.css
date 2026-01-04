@@ -15,7 +15,7 @@ body {
 
 /* --- 3. THE LAYOUT --- */
 #container {
-    max-width: 1100px;
+    max-width: 1000px;
     margin: 40px auto;
     padding: 0 20px;
 }
@@ -30,20 +30,13 @@ header { margin-bottom: 20px; }
 
 #sidebar { width: 250px; flex-shrink: 0; }
 
-/* SIDE-BY-SIDE MAIN AREA */
+/* STACKING BOXES UNDER EACH OTHER ON THE RIGHT */
 #main-content { 
     flex-grow: 1; 
     display: flex; 
+    flex-direction: column; /* This puts the carousel under the welcome box */
     gap: 15px; 
-    align-items: stretch;
-    min-width: 0; /* Prevents flex children from breaking layout */
-}
-
-.main-box {
-    flex: 1;
-    min-width: 0; /* Allows the box to contain the scrollable carousel */
-    display: flex;
-    flex-direction: column;
+    min-width: 0; 
 }
 
 /* --- 4. BOXES & FLOWER PATTERN --- */
@@ -109,17 +102,16 @@ header p { text-align: center; font-family: 'VT323', monospace; font-size: 22px;
 /* --- 6. THE SIDEWAYS CAROUSEL FIX --- */
 .carousel-container { 
     display: flex; 
-    flex-wrap: nowrap; /* Forces videos into one single line */
-    overflow-x: auto; /* Enables the sideways scroll */
+    flex-wrap: nowrap; 
+    overflow-x: auto; 
     gap: 15px; 
     padding: 10px 0;
     width: 100%;
-    -webkit-overflow-scrolling: touch; /* Smooth scroll for mobile */
 }
 
 .video-slot { 
-    flex: 0 0 280px; /* Prevents shrinking - keeps them 280px wide */
-    height: 160px; 
+    flex: 0 0 300px; /* Keeps them wide to force the scroll */
+    height: 180px; 
     background-color: black; 
     border: 1px solid #006994; 
 }
@@ -130,6 +122,6 @@ footer { text-align: center; font-size: 11px; margin-top: 20px; }
 
 /* Mobile Logic */
 @media (max-width: 850px) {
-    #layout-wrapper, #main-content { flex-direction: column; }
-    #sidebar, .main-box { width: 100%; }
+    #layout-wrapper { flex-direction: column; }
+    #sidebar { width: 100%; }
 }
