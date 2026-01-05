@@ -64,7 +64,7 @@ header h1 {
     text-align: center;
 }
 
-/* --- UPDATED HEADER TEXT STYLES --- */
+/* --- UPDATED HEADER TEXT & DOG STYLES --- */
 header p { 
     text-align: center; 
     font-family: 'VT323', monospace; 
@@ -73,12 +73,15 @@ header p {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px; /* Space between text and dogs */
+    gap: 20px; /* Increased gap slightly for bigger dogs */
 }
 
 .header-dog {
-    height: 30px; /* Roughly fits the 22px text */
+    /* CHANGED SIZE HERE: 30px * 10 = 300px */
+    height: 300px; 
     width: auto;
+    /* Ensure transparency is respected if the image has it */
+    background-color: transparent; 
 }
 
 .flipped {
@@ -121,4 +124,9 @@ footer { text-align: center; font-size: 11px; margin-top: 20px; }
 @media (max-width: 850px) {
     #layout-wrapper { flex-direction: column; }
     #sidebar { width: 100%; }
+    
+    /* Added: On mobile, make the dogs smaller again so they fit */
+    .header-dog {
+        height: 100px;
+    }
 }
