@@ -1,255 +1,128 @@
 /* --- 1. THE SCROLLBAR --- */
-
 ::-webkit-scrollbar { width: 12px; height: 10px; }
-
 ::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.7); }
-
 ::-webkit-scrollbar-thumb { background: #004d00; border: 2px solid #ffffff; }
 
-
-
 /* --- 2. THE BACKGROUND --- */
-
 html, body { margin: 0; padding: 0; height: 100%; }
-
 body {
-
     background: url('enchanted-forest-scene-stockcake.webp') no-repeat center center fixed;
-
     background-size: cover;
-
     font-family: 'Verdana', sans-serif;
-
     font-size: 12px;
-
     color: #111;
-
 }
-
-
 
 /* --- 3. THE LAYOUT --- */
-
 #container {
-
     max-width: 1000px;
-
     margin: 40px auto;
-
     padding: 0 20px;
-
 }
-
-
 
 header { margin-bottom: 20px; }
 
-
-
 #layout-wrapper {
-
     display: flex;
-
     gap: 20px;
-
     align-items: flex-start;
-
 }
-
-
 
 #sidebar { width: 250px; flex-shrink: 0; }
-
 #main-content { flex-grow: 1; display: flex; flex-direction: column; gap: 15px; min-width: 0; }
 
-
-
 /* --- 4. THE BOXES & FLOWERS --- */
-
 .box, header, footer {
-
     position: relative;
-
     background-color: white; /* Base color */
-
     border: 1px solid #006994;
-
     box-shadow: 4px 4px 0px #006994;
-
     margin-bottom: 10px;
-
     padding: 20px;
-
     z-index: 1;
-
     overflow: hidden;
-
 }
-
-
 
 /* This layer holds the flower pattern ONLY */
-
 .box::before, header::before, footer::before {
-
     content: "";
-
     position: absolute;
-
     top: 0; left: 0; right: 0; bottom: 0;
-
     background-image: url('flower.png');
-
     background-repeat: repeat;
-
     background-size: 100px; 
-
     opacity: 0.4;
-
     z-index: -1;
-
 }
-
-
 
 header h1 {
-
     font-family: 'VT323', monospace;
-
     font-size: 70px;
-
     text-transform: uppercase;
-
     margin: 0; color: red; 
-
     text-shadow: 4px 4px 0px black; 
-
     text-align: center;
-
 }
-
-
 
 /* --- UPDATED HEADER TEXT & DOG STYLES --- */
-
 header p { 
-
     text-align: center; 
-
     font-family: 'VT323', monospace; 
-
     font-size: 22px;
-
     /* Flexbox to align dogs and text */
-
     display: flex;
-
     justify-content: center;
-
     align-items: center;
-
     gap: 15px; 
-
 }
-
-
 
 .header-dog {
-
     /* SIZE SET TO 100px */
-
     height: 100px; 
-
     width: auto;
-
     background-color: transparent; 
-
 }
-
-
 
 .flipped {
-
     transform: scaleX(-1); /* Flips the image horizontally */
-
 }
 
-
-
 /* --- 5. IMAGE & GIF FIXES --- */
-
 .big-profile-pic { width: 100%; max-width: 250px; height: auto; display: block; margin-bottom: 15px; }
-
-
 
 .gif-sidebar-container { display: flex; flex-wrap: wrap; gap: 5px; justify-content: center; }
 
-
-
 .sidebar-gif {
-
     width: 65px !important;
-
     height: 65px !important;
-
     object-fit: cover;
-
     border: 1px solid #006994;
-
     image-rendering: pixelated;
-
 }
-
-
 
 .social-icon { width: 20px; height: 20px; }
-
 .link-row { display: flex; align-items: center; gap: 10px; margin-top: 5px; }
 
-
-
 /* --- 6. CAROUSEL --- */
-
 .carousel-container { display: flex; flex-wrap: nowrap; overflow-x: auto; gap: 15px; padding: 10px 0; width: 100%; }
 
-
-
 .video-slot { 
-
     flex: 0 0 480px; 
-
     height: 270px; 
-
     background-color: black; 
-
     border: 1px solid #006994; 
-
 }
-
-
 
 .video-slot iframe { width: 100%; height: 100%; border: none; }
 
-
-
 footer { text-align: center; font-size: 11px; margin-top: 20px; }
 
-
-
 /* Mobile Logic */
-
 @media (max-width: 850px) {
-
     #layout-wrapper { flex-direction: column; }
-
     #sidebar { width: 100%; }
-
     
-
     .header-dog {
-
         height: 80px; /* Slightly smaller on phones */
-
     }
-
 }
