@@ -64,7 +64,26 @@ header h1 {
     text-align: center;
 }
 
-header p { text-align: center; font-family: 'VT323', monospace; font-size: 22px; }
+/* --- UPDATED HEADER TEXT STYLES --- */
+header p { 
+    text-align: center; 
+    font-family: 'VT323', monospace; 
+    font-size: 22px;
+    /* Flexbox to align dogs and text */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* Space between text and dogs */
+}
+
+.header-dog {
+    height: 30px; /* Roughly fits the 22px text */
+    width: auto;
+}
+
+.flipped {
+    transform: scaleX(-1); /* Flips the image horizontally */
+}
 
 /* --- 5. IMAGE & GIF FIXES --- */
 .big-profile-pic { width: 100%; max-width: 250px; height: auto; display: block; margin-bottom: 15px; }
