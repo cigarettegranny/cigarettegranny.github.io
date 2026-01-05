@@ -1,54 +1,59 @@
-/* --- 1. THE SCROLLBAR --- */
-::-webkit-scrollbar { width: 12px; height: 10px; }
-::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.7); }
-::-webkit-scrollbar-thumb { background: #004d00; border: 2px solid #ffffff; }
-
-/* --- 2. THE BACKGROUND --- */
-html, body { margin: 0; padding: 0; height: 100%; }
-body {
-    background: url('enchanted-forest-scene-stockcake.webp') no-repeat center center fixed;
-    background-size: cover;
-    font-family: 'Verdana', sans-serif;
-    font-size: 12px;
-    color: #111;
-}
-
-/* --- 3. THE LAYOUT --- */
-#container {
-    max-width: 1000px;
-    margin: 40px auto;
-    padding: 0 20px;
-}
-
-header { margin-bottom: 20px; }
-
-#layout-wrapper {
-    display: flex;
-    gap: 20px;
-    align-items: flex-start;
-}
-
+@@ -31,7 +31,7 @@ header { margin-bottom: 20px; }
 #sidebar { width: 250px; flex-shrink: 0; }
 #main-content { flex-grow: 1; display: flex; flex-direction: column; gap: 15px; min-width: 0; }
 
-/* --- 4. THE BOXES & FLOWERS & SKELETONS --- */
+/* --- 4. THE BOXES & FLOWERS (NEW FIX) --- */
+/* --- 4. THE BOXES & FLOWERS --- */
 .box, header, footer {
     position: relative;
     background-color: white; /* Base color */
-    border: 1px solid #006994;
-    box-shadow: 4px 4px 0px #006994;
-    margin-bottom: 10px;
-    
-    /* UPDATED PADDING: 
-       Top padding is increased to 55px so text starts below the skeletons */
-    padding: 55px 20px 20px 20px;
-    
-    z-index: 1;
-    overflow: hidden;
+@@ -50,8 +50,8 @@ header { margin-bottom: 20px; }
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: url('flower.png');
+    background-repeat: repeat;
+    background-size: 100px; /* Adjust size of flower pattern here */
+    opacity: 0.4; /* Makes flowers visible but light enough to read text */
+    background-size: 100px; 
+    opacity: 0.4;
+    z-index: -1;
 }
 
-/* This layer holds the flower pattern (Background) */
-.box::before, header::before, footer::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0;
+@@ -73,14 +73,13 @@ header p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px; /* Increased gap slightly for bigger dogs */
+    gap: 15px; 
+}
+
+.header-dog {
+    /* CHANGED SIZE HERE: 30px * 10 = 300px */
+    height: 150px; 
+    /* SIZE SET TO 100px */
+    height: 100px; 
+    width: auto;
+    /* Ensure transparency is respected if the image has it */
+    background-color: transparent; 
+}
+
+@@ -108,10 +107,8 @@ header p {
+.carousel-container { display: flex; flex-wrap: nowrap; overflow-x: auto; gap: 15px; padding: 10px 0; width: 100%; }
+
+.video-slot { 
+    /* INCREASED SIZE TO FIX BLURRY THUMBNAIL */
+    flex: 0 0 480px; 
+    height: 270px; 
+    
+    background-color: black; 
+    border: 1px solid #006994; 
+}
+@@ -125,8 +122,7 @@ footer { text-align: center; font-size: 11px; margin-top: 20px; }
+    #layout-wrapper { flex-direction: column; }
+    #sidebar { width: 100%; }
+
+    /* Added: On mobile, make the dogs smaller again so they fit */
+    .header-dog {
+        height: 100px;
+        height: 80px; /* Slightly smaller on phones */
+    }
+}
