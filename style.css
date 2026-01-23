@@ -95,4 +95,15 @@ header { margin-bottom: 20px; transition: transform 0.2s ease; }
 .box::before, header::before, footer::before {
     content: "";
     position: absolute;
-    top: 0; left: 0; right: 0; bottom
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* decorative overlay — adjust or replace with your image */
+    background-image: url('flowers-overlay.png');
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    opacity: 0.12;
+    pointer-events: none;
+    z-index: 0;
+}
