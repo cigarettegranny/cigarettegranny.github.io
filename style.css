@@ -3,24 +3,49 @@
 ::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.7); }
 ::-webkit-scrollbar-thumb { background: #004d00; border: 2px solid #ffffff; }
 
-/* --- 2. THE BACKGROUND --- */
+/* --- 2. CORE & ANIMATIONS (Merged Style) --- */
+@keyframes shake {
+    8%, 41% { transform: translateX(-5px); }
+    25%, 58% { transform: translateX(5px); }
+    75% { transform: translateX(-2px); }
+    92% { transform: translateX(2px); }
+    0%, to { transform: translateX(0); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes domoBounce {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(3deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
+}
+
+*:focus-visible {
+    outline: 2px solid rgba(66,153,225,.6);
+    outline-offset: 2px;
+}
+
+/* --- 3. THE BACKGROUND --- */
 html, body { margin: 0; padding: 0; height: 100%; }
 body {
-    background: url('enchanted-forest-scene-stockcake.webp') no-repeat center center fixed;
+    background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('enchanted-forest-scene-stockcake.webp') no-repeat center center fixed;
     background-size: cover;
-    font-family: 'Verdana', sans-serif;
-    font-size: 12px;
+    font-family: 'Inter', 'Verdana', sans-serif;
+    font-size: 13px;
     color: #111;
 }
 
-/* --- 3. THE LAYOUT --- */
+/* --- 4. THE LAYOUT --- */
 #container {
     max-width: 1000px;
     margin: 40px auto;
     padding: 0 20px;
 }
 
-header { margin-bottom: 20px; }
+header { margin-bottom: 20px; transition: transform 0.2s ease; }
 
 #layout-wrapper {
     display: flex;
@@ -31,16 +56,22 @@ header { margin-bottom: 20px; }
 #sidebar { width: 250px; flex-shrink: 0; }
 #main-content { flex-grow: 1; display: flex; flex-direction: column; gap: 15px; min-width: 0; }
 
-/* --- 4. THE BOXES & FLOWERS --- */
+/* --- 5. THE BOXES & FLOWERS --- */
 .box, header, footer {
     position: relative;
-    background-color: white; 
-    border: 1px solid #006994;
-    box-shadow: 4px 4px 0px #006994;
-    margin-bottom: 10px;
+    background-color: rgba(255, 255, 255, 0.95); 
+    border: 2px solid #006994;
+    box-shadow: 6px 6px 0px rgba(0, 105, 148, 0.4);
+    margin-bottom: 15px;
     padding: 20px;
     z-index: 1;
     overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.box:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 8px 8px 0px rgba(0, 105, 148, 0.5);
 }
 
 .box::before, header::before, footer::before {
@@ -50,15 +81,15 @@ header { margin-bottom: 20px; }
     background-image: url('flower.png');
     background-repeat: repeat;
     background-size: 100px; 
-    opacity: 0.4;
+    opacity: 0.2;
     z-index: -1;
 }
 
 header h1 {
     font-family: 'VT323', monospace;
-    font-size: 70px;
+    font-size: 60px;
     text-transform: uppercase;
-    margin: 0; color: red; 
+    margin: 0; color: #ff0000; 
     text-shadow: 4px 4px 0px black; 
     text-align: center;
 }
@@ -79,14 +110,21 @@ header p {
     background-color: transparent; 
 }
 
-.flipped {
-    transform: scaleX(-1);
+.flipped { transform: scaleX(-1); }
+
+/* --- 6. IMAGE & ANIMATION TRIGGERS --- */
+.big-profile-pic { 
+    width: 100%; 
+    max-width: 250px; 
+    height: auto; 
+    display: block; 
+    margin-bottom: 15px; 
+    border: 3px solid #006994;
+    image-rendering: pixelated;
 }
 
-/* --- 5. IMAGE & GIF FIXES --- */
-.big-profile-pic { width: 100%; max-width: 250px; height: auto; display: block; margin-bottom: 15px; }
-
-.gif-sidebar-container { display: flex; flex-wrap: wrap; gap: 5px; justify-content: center; }
+.spin-on-hover:hover { animation: spin 2s linear infinite; }
+.shake-on-hover:hover { animation: shake 0.5s ease-in-out infinite; }
 
 .sidebar-gif {
     width: 65px !important;
@@ -96,28 +134,27 @@ header p {
     image-rendering: pixelated;
 }
 
-.social-icon { width: 20px; height: 20px; }
-.link-row { display: flex; align-items: center; gap: 10px; margin-top: 5px; }
+.social-icon { width: 22px; height: 22px; }
+.link-row { display: flex; align-items: center; gap: 10px; margin-top: 8px; }
 
-/* --- 6. CAROUSEL --- */
+/* --- 7. CAROUSEL & UTILITY --- */
 .carousel-container { display: flex; flex-wrap: nowrap; overflow-x: auto; gap: 15px; padding: 10px 0; width: 100%; }
 
 .video-slot { 
     flex: 0 0 480px; 
     height: 270px; 
     background-color: black; 
-    border: 1px solid #006994; 
+    border: 2px solid #006994; 
 }
 
 .video-slot iframe { width: 100%; height: 100%; border: none; }
 
-footer { text-align: center; font-size: 11px; margin-top: 20px; }
+footer { text-align: center; font-size: 12px; margin-top: 20px; font-weight: bold; }
 
-/* --- 7. NEW: SKULLKID ANIMATION --- */
 .floating-skullkid {
     position: fixed;
     top: 20px;
-    right: 20px; /* Positioned in your red circle area */
+    right: 20px;
     width: 250px;
     height: auto;
     z-index: 9999;
@@ -125,16 +162,10 @@ footer { text-align: center; font-size: 11px; margin-top: 20px; }
     animation: domoBounce 3.5s ease-in-out infinite;
 }
 
-@keyframes domoBounce {
-    0% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-20px) rotate(3deg); }
-    100% { transform: translateY(0px) rotate(0deg); }
-}
-
 /* Mobile Logic */
 @media (max-width: 850px) {
     #layout-wrapper { flex-direction: column; }
     #sidebar { width: 100%; }
     .header-dog { height: 80px; }
-    .floating-skullkid { display: none; } /* Hide on phones so it doesn't block text */
+    .floating-skullkid { display: none; }
 }
