@@ -28,14 +28,14 @@
     outline-offset: 2px;
 }
 
-/* --- 3. THE BACKGROUND & CURSOR --- */
+/* --- 3. THE BACKGROUND & CURSORS --- */
 html, body { 
     margin: 0; 
     padding: 0; 
     height: 100%; 
     
-    /* 1. MAIN CURSOR: This uses your "roundynormal.cur" everywhere */
-    cursor: url('roundynormal.cur'), auto; 
+    /* 1. MAIN CURSOR (Normal Roundy) */
+    cursor: url('roundynormal.cur'), auto;
 }
 
 body {
@@ -46,15 +46,53 @@ body {
     color: #111;
 }
 
-/* 2. CLICKING CURSOR: Shows "Alternate Select.cur" on links & buttons */
+/* 2. LINK CURSOR (Alternate Select) */
 a, button, .clickable, .video-slot, iframe, .social-icon {
     cursor: url('Alternate Select.cur'), pointer; 
 }
 
-/* 3. LOADING CURSOR: Shows "busyroundywheeeee.ani" when waiting */
-/* You can add class="loading" to any element to see this animation */
+/* 3. LOADING CURSOR (Busy Animation) */
 .loading, .wait {
     cursor: url('busyroundywheeeee.ani'), wait;
 }
 
-/* --- 4. THE
+/* --- 4. THE LAYOUT --- */
+#container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+header { margin-bottom: 20px; transition: transform 0.2s ease; }
+
+#layout-wrapper {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+#sidebar { width: 250px; flex-shrink: 0; }
+#main-content { flex-grow: 1; display: flex; flex-direction: column; gap: 15px; min-width: 0; }
+
+/* --- 5. THE BOXES & FLOWERS --- */
+.box, header, footer {
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.95); 
+    border: 2px solid #006994;
+    box-shadow: 6px 6px 0px rgba(0, 105, 148, 0.4);
+    margin-bottom: 15px;
+    padding: 20px;
+    z-index: 1;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.box:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 8px 8px 0px rgba(0, 105, 148, 0.5);
+}
+
+.box::before, header::before, footer::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom
