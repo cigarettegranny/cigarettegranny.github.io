@@ -1,10 +1,9 @@
-/* Cleaned stylesheet for cigarettegranny.github.io */
-
-/* Scrollbar */
+/* --- 1. THE SCROLLBAR --- */
+::-webkit-scrollbar { width: 12px; height: 10px; }
 ::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.7); }
 ::-webkit-scrollbar-thumb { background: #004d00; border: 2px solid #ffffff; }
 
-/* Animations */
+/* --- 2. CORE & ANIMATIONS --- */
 @keyframes shake {
     8%, 41% { transform: translateX(-5px); }
     25%, 58% { transform: translateX(5px); }
@@ -24,13 +23,12 @@
     100% { transform: translateY(0px) rotate(0deg); }
 }
 
-/* Accessibility focus */
 *:focus-visible {
     outline: 2px solid rgba(66,153,225,.6);
     outline-offset: 2px;
 }
 
-/* Page background & base font */
+/* --- 3. THE BACKGROUND --- */
 html, body { margin: 0; padding: 0; height: 100%; }
 body {
     background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('enchanted-forest-scene-stockcake.webp') no-repeat center center fixed;
@@ -40,45 +38,28 @@ body {
     color: #111;
 }
 
-/* Layout container */
+/* --- 4. THE LAYOUT --- */
 #container {
     max-width: 1000px;
     margin: 40px auto;
     padding: 0 20px;
 }
 
-/* Header */
-header {
-    margin-bottom: 20px;
-    transition: transform 0.2s ease;
-}
-header h1 {
-    font-family: 'VT323', monospace;
-    font-size: 60px;
-    text-transform: uppercase;
-    margin: 0;
-    color: #ff0000;
-    text-shadow: 4px 4px 0px black;
-    text-align: center;
-}
-header p {
-    text-align: center;
-    background-color: transparent;
-}
+header { margin-bottom: 20px; transition: transform 0.2s ease; }
 
-/* Layout columns */
 #layout-wrapper {
     display: flex;
     gap: 20px;
     align-items: flex-start;
 }
+
 #sidebar { width: 250px; flex-shrink: 0; }
 #main-content { flex-grow: 1; display: flex; flex-direction: column; gap: 15px; min-width: 0; }
 
-/* Boxes */
+/* --- 5. THE BOXES & FLOWERS --- */
 .box, header, footer {
     position: relative;
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: rgba(255, 255, 255, 0.95); 
     border: 2px solid #006994;
     box-shadow: 6px 6px 0px rgba(0, 105, 148, 0.4);
     margin-bottom: 15px;
@@ -87,63 +68,89 @@ header p {
     overflow: hidden;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
+
 .box:hover {
     transform: translate(-2px, -2px);
     box-shadow: 8px 8px 0px rgba(0, 105, 148, 0.5);
 }
+
 .box::before, header::before, footer::before {
     content: "";
     position: absolute;
-    inset: 0;
+    top: 0; left: 0; right: 0; bottom: 0;
     background-image: url('flower.png');
     background-repeat: repeat;
-    background-size: 100px;
+    background-size: 100px; 
     opacity: 0.2;
     z-index: -1;
 }
 
-/* Images / avatars */
-.big-profile-pic {
-    width: 100%;
-    max-width: 250px;
-    height: auto;
-    display: block;
-    margin-bottom: 15px;
-    border: 3px solid #006994;
+header h1 {
+    font-family: 'VT323', monospace;
+    font-size: 60px;
+    text-transform: uppercase;
+    margin: 0; color: #ff0000; 
+    text-shadow: 4px 4px 0px black; 
+    text-align: center;
+}
+
+header p { 
+    text-align: center; 
+    font-family: 'VT323', monospace; 
+    font-size: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px; 
+}
+
+.header-dog {
+    height: 100px; 
+    width: auto;
+    background-color: transparent; 
+}
+
+.flipped { transform: scaleX(-1); }
+
+/* --- 6. IMAGE & ANIMATION TRIGGERS --- */
+.big-profile-pic { 
+    width: 100%; 
+    max-width: 250px; 
+    height: auto; 
+    display: block; 
+    margin-bottom: 15px; 
+    /* Blue border removed here */
     image-rendering: pixelated;
 }
 
-/* Small helper classes */
-.flipped { transform: scaleX(-1); }
 .spin-on-hover:hover { animation: spin 2s linear infinite; }
 .shake-on-hover:hover { animation: shake 0.5s ease-in-out infinite; }
 
-/* GIFs in sidebar */
-.gif-sidebar-container { display: flex; flex-wrap: wrap; gap: 5px; justify-content: center; }
 .sidebar-gif {
     width: 65px !important;
-    height: auto;
+    height: 65px !important;
+    object-fit: cover;
+    border: 1px solid #006994;
     image-rendering: pixelated;
 }
 
-/* Social links */
 .social-icon { width: 22px; height: 22px; }
 .link-row { display: flex; align-items: center; gap: 10px; margin-top: 8px; }
 
-/* Carousel */
+/* --- 7. CAROUSEL & UTILITY --- */
 .carousel-container { display: flex; flex-wrap: nowrap; overflow-x: auto; gap: 15px; padding: 10px 0; width: 100%; }
-.video-slot {
-    flex: 0 0 480px;
-    height: 270px;
-    background-color: black;
-    border: 2px solid #006994;
+
+.video-slot { 
+    flex: 0 0 480px; 
+    height: 270px; 
+    background-color: black; 
+    border: 2px solid #006994; 
 }
+
 .video-slot iframe { width: 100%; height: 100%; border: none; }
 
-/* Footer */
 footer { text-align: center; font-size: 12px; margin-top: 20px; font-weight: bold; }
 
-/* Floating Skullkid */
 .floating-skullkid {
     position: fixed;
     top: 20px;
@@ -155,10 +162,10 @@ footer { text-align: center; font-size: 12px; margin-top: 20px; font-weight: bol
     animation: domoBounce 3.5s ease-in-out infinite;
 }
 
-/* Mobile responsive */
+/* Mobile Logic */
 @media (max-width: 850px) {
     #layout-wrapper { flex-direction: column; }
     #sidebar { width: 100%; }
     .header-dog { height: 80px; }
-    .floating-skullkid { display: none; } /* Hide on phones so it doesn't block text */
+    .floating-skullkid { display: none; }
 }
