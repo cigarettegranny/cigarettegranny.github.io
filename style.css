@@ -1,7 +1,8 @@
 /* --- 1. THE SCROLLBAR --- */
-::-webkit-scrollbar { width: 12px; height: 10px; }
-::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.7); }
-::-webkit-scrollbar-thumb { background: #004d00; border: 2px solid #ffffff; }
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: #0a0a0a; }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 5px; }
+::-webkit-scrollbar-thumb:hover { background: #555; }
 
 /* --- 2. CORE & ANIMATIONS --- */
 @keyframes shake {
@@ -24,18 +25,18 @@
 }
 
 *:focus-visible {
-    outline: 2px solid rgba(66,153,225,.6);
+    outline: 2px solid rgba(255, 255, 255, 0.6);
     outline-offset: 2px;
 }
 
 /* --- 3. THE BACKGROUND --- */
 html, body { margin: 0; padding: 0; height: 100%; }
 body {
-    background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('enchanted-forest-scene-stockcake.webp') no-repeat center center fixed;
-    background-size: cover;
+    background-color: #0f0f0f; /* Changed from the forest image to a solid modern dark gray */
     font-family: 'Inter', 'Verdana', sans-serif;
-    font-size: 13px;
-    color: #111;
+    font-size: 14px;
+    color: #e0e0e0; /* Lightened text for contrast against the dark background */
+    line-height: 1.6;
 }
 
 /* --- 4. THE LAYOUT --- */
@@ -54,44 +55,37 @@ header { margin-bottom: 20px; transition: transform 0.2s ease; }
 }
 
 #sidebar { width: 250px; flex-shrink: 0; }
-#main-content { flex-grow: 1; display: flex; flex-direction: column; gap: 15px; min-width: 0; }
+#main-content { flex-grow: 1; display: flex; flex-direction: column; gap: 20px; min-width: 0; }
 
-/* --- 5. THE BOXES & FLOWERS --- */
-.box, header, footer {
+/* --- 5. THE BOXES --- */
+.box, header {
     position: relative;
-    background-color: rgba(255, 255, 255, 0.95); 
-    border: 2px solid #006994;
-    box-shadow: 6px 6px 0px rgba(0, 105, 148, 0.4);
-    margin-bottom: 15px;
-    padding: 20px;
+    background-color: #1a1a1a; /* Replaced the white background */
+    border: 1px solid #333; /* Replaced the thick blue border */
+    border-radius: 12px; /* Added rounded corners for a modern feel */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4); /* Swapped the blocky shadow for a soft, modern drop shadow */
+    padding: 24px;
     z-index: 1;
     overflow: hidden;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
+
+/* Removed the ::before selector completely to eliminate the flower.png background pattern */
 
 .box:hover {
-    transform: translate(-2px, -2px);
-    box-shadow: 8px 8px 0px rgba(0, 105, 148, 0.5);
-}
-
-.box::before, header::before, footer::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-image: url('flower.png');
-    background-repeat: repeat;
-    background-size: 100px; 
-    opacity: 0.2;
-    z-index: -1;
+    transform: translateY(-2px); /* Switched from a diagonal shift to a smooth upward hover */
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
+    border-color: #555;
 }
 
 header h1 {
     font-family: 'VT323', monospace;
     font-size: 60px;
-    text-transform: uppercase;
-    margin: 0; color: #ff0000; 
-    text-shadow: 4px 4px 0px black; 
+    margin: 0; 
+    color: #ffffff; /* Changed from red */
     text-align: center;
+    letter-spacing: 2px;
+    /* Removed the harsh black text shadow */
 }
 
 header p { 
@@ -102,10 +96,20 @@ header p {
     justify-content: center;
     align-items: center;
     gap: 15px; 
+    color: #aaa;
 }
 
+h2, h3 {
+    color: #ffffff;
+    margin-top: 0;
+    font-weight: 600;
+}
+
+a { color: #8ab4f8; text-decoration: none; transition: color 0.2s; }
+a:hover { color: #aecbfa; text-decoration: underline; }
+
 .header-dog {
-    height: 100px; 
+    height: 80px; 
     width: auto;
     background-color: transparent; 
 }
@@ -119,37 +123,68 @@ header p {
     height: auto; 
     display: block; 
     margin-bottom: 15px; 
-    /* Blue border removed here */
+    border-radius: 8px;
     image-rendering: pixelated;
 }
 
 .spin-on-hover:hover { animation: spin 2s linear infinite; }
 .shake-on-hover:hover { animation: shake 0.5s ease-in-out infinite; }
 
+.gif-sidebar-container {
+    display: flex;
+    justify-content: space-between;
+}
+
 .sidebar-gif {
     width: 65px !important;
     height: 65px !important;
     object-fit: cover;
-    border: 1px solid #006994;
+    border-radius: 6px;
+    border: 1px solid #333;
     image-rendering: pixelated;
 }
 
-.social-icon { width: 22px; height: 22px; }
+.social-icon { 
+    width: 22px; 
+    height: 22px; 
+    filter: invert(1); /* Inverts your icons to white so they show up on the black background */
+    opacity: 0.8; 
+}
 .link-row { display: flex; align-items: center; gap: 10px; margin-top: 8px; }
 
 /* --- 7. CAROUSEL & UTILITY --- */
-.carousel-container { display: flex; flex-wrap: nowrap; overflow-x: auto; gap: 15px; padding: 10px 0; width: 100%; }
+.carousel-container { 
+    display: flex; 
+    flex-wrap: nowrap; 
+    overflow-x: auto; 
+    gap: 15px; 
+    padding: 10px 0; 
+    width: 100%; 
+    scrollbar-width: thin;
+    scrollbar-color: #333 #0a0a0a;
+}
 
 .video-slot { 
     flex: 0 0 480px; 
     height: 270px; 
-    background-color: black; 
-    border: 2px solid #006994; 
+    background-color: #000; 
+    border: 1px solid #333; 
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 .video-slot iframe { width: 100%; height: 100%; border: none; }
 
-footer { text-align: center; font-size: 12px; margin-top: 20px; font-weight: bold; }
+footer { 
+    text-align: center; 
+    font-size: 13px; 
+    margin-top: 20px; 
+    font-weight: bold; 
+    color: #777;
+    background: transparent; /* Removed the box styling from the footer for a cleaner look */
+    border: none;
+    box-shadow: none;
+}
 
 .floating-skullkid {
     position: fixed;
@@ -166,6 +201,7 @@ footer { text-align: center; font-size: 12px; margin-top: 20px; font-weight: bol
 @media (max-width: 850px) {
     #layout-wrapper { flex-direction: column; }
     #sidebar { width: 100%; }
-    .header-dog { height: 80px; }
+    .header-dog { height: 60px; }
     .floating-skullkid { display: none; }
+    .video-slot { flex: 0 0 100%; height: 56vw; } /* Makes videos responsive on mobile */
 }
